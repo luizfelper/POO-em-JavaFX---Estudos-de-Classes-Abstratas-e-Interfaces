@@ -15,7 +15,7 @@ public class Gerente extends Funcionario {
 			double salarioComBonificacao = this.salario * this.bonificacao;
 			
 		return salarioComBonificacao;
-	}
+	} //
 
 	public double salarioTotal() {
 		double salarioTotal = this.salario + this.getBonificacao();
