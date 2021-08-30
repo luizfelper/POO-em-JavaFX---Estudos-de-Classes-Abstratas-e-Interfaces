@@ -1,22 +1,14 @@
 
-public class Funcionario {
-
-	private String nome;
-	private int matricula;
-	protected double salario;
+public class Funcionario extends Pessoa {
 	
-	public Funcionario (String nome, int matricula, double salario) {
-		this.nome = nome;
+	int matricula;
+	double salario;
+	
+	public Funcionario(String nome, int cpf, int matricula, double salario) {
+		super(nome, cpf);
 		this.matricula = matricula;
 		this.salario = salario;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
+		
 	}
 
 	public int getMatricula() {
@@ -34,15 +26,19 @@ public class Funcionario {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
-	
-	
-	public void mostrarDetalhes() {
-		System.out.println("Detalhes do Funcionï¿½rio: ");
-		System.out.println("Nome: " + this.nome);
-		System.out.println("Matricula: " + this.matricula);
-		System.out.println("Salario: " + this.salario);	
-		System.out.println("---\n");		
-	}
 
+	public String mostrarDetalhes() {
+		String nome = this.nome;
+		int matricula = this.getMatricula();
+		double salario = this.salario;
+		
+		System.out.println(
+				"Nome: " + nome +
+				" | Matrícula: " + matricula + 
+				" | Salário: " + salario
+				);
+		
+		return toString();		
+	}
 	
 }

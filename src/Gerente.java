@@ -1,16 +1,29 @@
 
 public class Gerente extends Funcionario {
 	
-	private double bonificacao;
-	private int senha;
-
-	public Gerente(String nome, int matricula, double salario, double bonificacao, int senha) {
-		super(nome, matricula, salario);
+	double bonificacao;
+	int senha;
+	
+	public Gerente(String nome, int cpf, int matricula, double salario, double bonificacao, int senha) {
+		super(nome, cpf, matricula, salario);
 		this.bonificacao = bonificacao;
 		this.senha = senha;
 	}
 
-	///* Mï¿½TODOS DE NEGï¿½CIO */
+	public int getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+
+	public void setBonificacao(double bonificacao) {
+		this.bonificacao = bonificacao;
+	}
+
+
+	///* METODOS DE NEGÓCIOS */
 	public double getBonificacao() {
 			double salarioComBonificacao = this.salario * this.bonificacao;
 			
@@ -23,14 +36,33 @@ public class Gerente extends Funcionario {
 		return salarioTotal;
 	}
 	
-	@Override
-	public void mostrarDetalhes() {
-		System.out.println("Detalhes do Gerente: ");
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("Matricula: " + this.getMatricula());
-		System.out.println("Salario: " + this.salario);
-		System.out.println("Salario com bonificacao: " + this.salarioTotal());	
-		System.out.println("---\n");		
+	public int getSenha() {
+		return senha;
+	}
+
+	public void setSenha(int senha) {
+		this.senha = senha;
 	}
 	
+	public String autentica(int senha) {
+		if (this.senha == senha) {
+			
+			String nomeGerente = this.getNome();
+			int matricula = this.getMatricula();
+			double salario = this.salario;
+			double salarioTotal = this.salarioTotal();
+			
+			
+			System.out.println("Gerente: " + nomeGerente +
+					" | Matrícula: "+ matricula +
+					" | Salário: " + salario +
+					" | Salário total: " + salarioTotal);
+			
+			return toString();
+			
+		} else {
+			System.out.println("Não deu certo!");
+			return toString();
+		}
+	}
 }
